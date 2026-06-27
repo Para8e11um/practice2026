@@ -16,8 +16,8 @@ jobs:
       with:
         dotnet-version: 9.0
     - name: Restore
-      run: dotnet restore
+      run: dotnet restore practice2026/practice2026/practice2026.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build practice2026/practice2026/practice2026.sln --no-restore
     - name: Test
-      run: dotnet test --no-build
+      run: dotnet test practice2026/practice2026/practice2026.sln --no-build
