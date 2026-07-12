@@ -2,7 +2,7 @@ name: .NET CI
 
 on:
   push:
-    branches: [ "master", "task07" ]
+    branches: [ "master", "task09" ]
   pull_request:
     branches: [ "master" ]
 
