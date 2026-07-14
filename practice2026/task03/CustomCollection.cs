@@ -26,6 +26,8 @@ namespace task03
         }
         public IEnumerable<T> FilterAndSort(Func<T,bool> predicate, Func<T,IComparable> keySelector)
         {
+            ArgumentNullException.ThrowIfNull(predicate);
+            ArgumentNullException.ThrowIfNull(keySelector);
             return _items.Where(predicate).OrderBy(keySelector);
         }
 
