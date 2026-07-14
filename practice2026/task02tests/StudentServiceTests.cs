@@ -27,7 +27,7 @@ public class StudentServiceTests
     [Fact]
     public void Test2()
     {
-        var result = _studentService.GetHighestAverageFaculty();
+        var result = _studentService.GetFacultyWithHighestAverageGrade();
         Assert.Equal("Экономика", result);
     }
     [Fact]
@@ -49,13 +49,9 @@ public class StudentServiceTests
     [Fact]
     public void Test5()
     {
-        var result = _studentService.GetStudentsGroupedByFaculty().ToList();
+        var result = _studentService.GroupStudentsByFaculty();
         Assert.Equal(2, result.Count());
-        var fitGroup = result.FirstOrDefault(g => g.Key == "ФИТ");
-        Assert.NotNull(fitGroup);
-        Assert.Equal(2, fitGroup.Count());
-        var ecoGroup = result.FirstOrDefault(g => g.Key == "Экономика");
-        Assert.NotNull(ecoGroup);
-        Assert.Single(ecoGroup);
+        Assert.Equal(2, result["ФИТ"].Count());
+        Assert.Single(result["Экономика"]);
     }
 }

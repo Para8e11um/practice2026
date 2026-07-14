@@ -34,13 +34,10 @@ namespace task02
                    orderby student.Name
                    select student;
         }
-        public IEnumerable<IGrouping<string,Student>> GetStudentsGroupedByFaculty() {
-            return from student in students
-                   group student by student.Faculty
-                   into studentGroup
-                   select studentGroup;
+        public ILookup<string, Student> GroupStudentsByFaculty() {
+            return students.ToLookup(s => s.Faculty);
         }
-        public string GetHighestAverageFaculty()
+        public string GetFacultyWithHighestAverageGrade()
         {
             return (from student in students
                     group student by student.Faculty into studentGroup
