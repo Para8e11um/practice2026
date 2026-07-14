@@ -8,6 +8,10 @@ namespace task05
         private readonly Type _type;
         public ClassAnalyzer(Type type)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException("Тип не может быть null");
+            }
             _type = type;
         }
         public IEnumerable<string> GetPublicMethods()
@@ -20,7 +24,7 @@ namespace task05
             var method = _type.GetMethod(methodname);
             if (method == null)
             {
-                return Enumerable.Empty<string>().Append($"Returns: {method.ReturnType.Name}");
+                return Enumerable.Empty<string>();
             } else
             {
                 return (from param in method.GetParameters()
@@ -39,7 +43,7 @@ namespace task05
         }
         public bool HasAttribute<T>() where T : Attribute
         {
-            return _type.GetCustomAttributes(typeof(T), false).Any();
+            return _type.IsDefined(typeof(T), false);
         }
     }
 }
