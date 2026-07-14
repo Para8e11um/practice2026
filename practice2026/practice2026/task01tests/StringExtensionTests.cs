@@ -1,7 +1,7 @@
 ﻿using Xunit;
 using task01;
 
-public class UnitTest1
+public class StringExtensionTests
 {
     [Fact]
     public void Test1()
