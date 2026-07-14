@@ -5,6 +5,15 @@ namespace task14
 {
     public class DefiniteIntegral
     {
+        public static double SolveSingleThread(double a, double b, Func<double,double> function, double step)
+        {
+            double sum = 0.0;
+            for (double x = a; x < b; x += step)
+            {
+                sum += function(x + step / 2.0) * step;
+            }
+            return sum;
+        }
         public static double Solve(double a, double b, Func<double, double> function, double step, int threadsnumber)
         {
             double totalIntegral = 0.0;
